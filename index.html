@@ -10,10 +10,10 @@
     
     <style>
         :root {
-            --primary-color: #5e35b1; /* สีม่วงตามโลโก้ */
-            --secondary-color: #ffd54f; /* สีเหลือง/ครีม */
-            --btn-color: #743d88; /* สีแดงปุ่ม */
-            --btn-hover: #743d88;
+            --primary-color: #5e35b1; 
+            --secondary-color: #ffd54f; 
+            --btn-color: #743d88; 
+            --btn-hover: #5e35b1;
             --text-color: #333;
         }
 
@@ -23,9 +23,7 @@
             padding: 0;
         }
 
-        /* --- แก้ไขจุดที่ 2: เพิ่มการจัดการ html เพื่อป้องกันจอล้นในมือถือ --- */
         html {
-            overflow-x: hidden; /* ป้องกันการเลื่อนซ้ายขวา */
             width: 100%;
         }
 
@@ -34,14 +32,14 @@
             background-color: #fdfbf7;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: center; /* จัดกึ่งกลางแนวตั้ง */
             min-height: 100vh;
-            width: 100%; /* บังคับความกว้าง */
-            overflow-x: hidden; /* ย้ำอีกครั้งที่ body */
+            width: 100%; 
             position: relative;
+            padding: 20px; /* กันชิดขอบ */
         }
 
-        /* ตกแต่งพื้นหลังด้วยวงกลม */
+        /* Bg Shapes */
         .bg-shape {
             position: absolute;
             border-radius: 50%;
@@ -51,27 +49,25 @@
         .shape-1 { width: 300px; height: 300px; background: #ffe0b2; top: -50px; right: -50px; }
         .shape-2 { width: 200px; height: 200px; background: #e1bee7; bottom: -50px; left: -50px; }
         
-        /* กล่องคอนเทนเนอร์หลัก */
         .main-card {
             background: white;
-            width: 90%;
-            max-width: 600px;
+            width: 100%;
+            max-width: 500px;
             padding: 40px 30px;
             border-radius: 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             text-align: center;
             border-top: 5px solid var(--primary-color);
             position: relative;
-            margin: auto; /* ช่วยจัดกึ่งกลางเพิ่มอีกแรง */
+            margin: auto; 
         }
 
-        /* โลโก้ */
         .logo-img {
             width: 120px;
             margin-bottom: 20px;
+            transition: width 0.3s ease; 
         }
 
-        /* หัวข้อ */
         h1 {
             color: var(--primary-color);
             font-size: 1.8rem;
@@ -86,7 +82,6 @@
             margin-bottom: 30px;
         }
 
-        /* กล่องข้อความแจ้งเตือน */
         .info-box {
             background-color: var(--secondary-color);
             color: #4e342e;
@@ -96,27 +91,27 @@
             font-size: 0.9rem;
             display: inline-block;
             box-shadow: 3px 3px 0px rgba(0,0,0,0.1);
+            width: 100%; /* ให้เต็มความกว้างการ์ด */
         }
 
-        /* ปุ่มกด */
         .cta-button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             background-color: var(--btn-color);
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.1rem; 
             font-weight: 600;
-            padding: 15px 40px;
+            padding: 15px 30px;
             border-radius: 50px;
             text-decoration: none;
             transition: all 0.3s ease;
-            /* เปลี่ยนเงาปุ่มให้เป็นสีม่วงจางๆ แทนสีแดง */
             box-shadow: 0 5px 15px rgba(94, 53, 177, 0.4);
             border: 2px solid transparent;
             cursor: pointer;
             width: 100%;
             max-width: 350px;
+            line-height: 1.4;
         }
 
         .cta-button:hover {
@@ -129,17 +124,78 @@
             transform: translateY(1px);
         }
 
-        /* ไอคอนลูกศร */
         .arrow-icon {
             margin-left: 10px;
             font-weight: bold;
         }
 
-        /* Media Query สำหรับมือถือ */
+        /* --- RESPONSIVE ZONE --- */
+
+        /* 1. มือถือแนวตั้ง */
         @media (max-width: 480px) {
-            h1 { font-size: 1.5rem; }
-            .main-card { padding: 30px 20px; width: 90%; } /* ปรับความกว้างให้ปลอดภัยขึ้นเล็กน้อย */
-            .cta-button { font-size: 1rem; padding: 12px 30px; }
+            .shape-1 { width: 150px; height: 150px; top: -20px; right: -20px; }
+            .shape-2 { width: 120px; height: 120px; bottom: -20px; left: -20px; }
+            
+            .main-card { padding: 30px 20px; }
+            .logo-img { width: 90px; margin-bottom: 15px; }
+            
+            h1 { font-size: 1.3rem; }
+            h2 { font-size: 0.9rem; margin-bottom: 20px; }
+            
+            .cta-button { font-size: 0.9rem; padding: 12px 15px; }
+        }
+
+        /* 2. มือถือแนวนอน (Landscape) - แก้ไขใหม่ */
+        @media (max-height: 500px) and (orientation: landscape) {
+            body {
+                align-items: flex-start; /* สำคัญ: ให้เริ่มจากบนสุด ไม่ฝืนกลาง */
+                padding-top: 20px;
+                padding-bottom: 20px;
+                height: auto; /* ปล่อยความสูงอิสระเพื่อให้ Scroll ได้ */
+                overflow-y: auto; /* บังคับให้ Scroll แนวตั้งได้ */
+            }
+            
+            .main-card { 
+                padding: 20px 30px; 
+                margin: 0 auto; /* จัดกลางแนวนอน */
+                max-width: 600px; /* ขยายข้างให้กว้างขึ้น */
+                display: flex; /* ใช้ Flex จัด layout ภายใน */
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            /* ปรับขนาด Logo */
+            .logo-img { 
+                width: 60px; 
+                margin-bottom: 5px; 
+                margin-left: auto; margin-right: auto; /* จัดกลาง */
+            } 
+            
+            /* ลดขนาดตัวอักษรเพื่อประหยัดที่ */
+            h1 { font-size: 1.1rem; margin-bottom: 2px; }
+            
+            /* นำชื่อคณะกลับมา (display: block) แต่ทำให้เล็ก */
+            h2 { 
+                display: block; 
+                font-size: 0.8rem; 
+                margin-bottom: 10px; 
+            }
+            
+            .info-box { 
+                padding: 8px; 
+                margin-bottom: 10px; 
+                font-size: 0.8rem;
+            }
+
+            .cta-button { 
+                padding: 10px 20px; 
+                font-size: 0.9rem;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+            
+            /* ซ่อน Graphic เพื่อความสะอาด */
+            .bg-shape { display: none; }
         }
     </style>
 </head>
@@ -158,8 +214,6 @@
             📝 กรุณาล็อกอินเพื่อเริ่มการตรวจนับ
         </div>
 
-        <br>
-
         <a id="login-btn" href="#" class="cta-button">
             CLICK HERE 
             <span style="font-size: 0.8em; margin-left: 5px; font-weight: 300;">| คลิกที่นี่เพื่อเข้าสู่ระบบ</span>
@@ -168,24 +222,10 @@
     </div>
 
     <script>
-        // --- ส่วน Logic การตรวจสอบ Browser เดิม ---
+        function isIOS() { return /iPhone|iPad|iPod/i.test(navigator.userAgent); }
+        function isFacebookApp() { return /FBAN|FBAV/i.test(navigator.userAgent); }
+        function isLineApp() { return /Line/i.test(navigator.userAgent); }
 
-        // Function to detect if the user is on an iOS device
-        function isIOS() {
-            return /iPhone|iPad|iPod/i.test(navigator.userAgent);
-        }
-
-        // Function to detect if the user is using Facebook's in-app browser
-        function isFacebookApp() {
-            return /FBAN|FBAV/i.test(navigator.userAgent);
-        }
-
-        // Function to detect if the user is using LINE's in-app browser
-        function isLineApp() {
-            return /Line/i.test(navigator.userAgent);
-        }
-
-        // --- ส่วนการทำงานหลัก ---
         function setButtonLink() {
             var btn = document.getElementById('login-btn');
             var targetUrl = 'https://script.google.com/a/macros/jc.tu.ac.th/s/AKfycbzMm3YzwO2AxVM6VcLWqeumqgHhQ8tdglC6DyUFtOMSeDXnfvVc3v-z9SFRIIzE3LGc/exec?fbclid=IwY2xjawGBW81leHRuA2FlbQIxMAABHdECaq9rixZtZgvfwaV2L9iShTggX89gCjLHIh8FitvcQ5mbhBO4I3QqMQ_aem_qaiv8lAS75Wqi8JDAy1KaA';
@@ -197,37 +237,27 @@
             }
         }
 
-        // 2. เพิ่ม Event Listener สำหรับแสดง Loading ก่อนเปลี่ยนหน้า
         document.getElementById('login-btn').addEventListener('click', function(e) {
-            e.preventDefault(); // หยุดการเปลี่ยนหน้าทันที
-            
-            var targetUrl = this.href; // ดึง Link ที่คำนวณไว้แล้วมาใช้
+            e.preventDefault(); 
+            var targetUrl = this.href;
 
-            // แสดง SweetAlert Loading
             Swal.fire({
                 title: 'กำลังเข้าสู่ระบบ',
                 text: 'กรุณารอสักครู่...',
-                allowOutsideClick: false, // ห้ามกดปิดข้างนอก
+                allowOutsideClick: false, 
                 allowEscapeKey: false,
-                color: '#5e35b1', // สีตัวอักษร
-                didOpen: () => {
-                    Swal.showLoading(); // สั่งให้หมุนๆ
-                }
+                color: '#5e35b1', 
+                confirmButtonColor: '#5e35b1',
+                didOpen: () => { Swal.showLoading(); }
             });
 
-            // หน่วงเวลาเล็กน้อย (800ms) Loading แล้วค่อยเปลี่ยนหน้า
-            setTimeout(() => {
-                window.location.href = targetUrl;
-            }, 800);
+            setTimeout(() => { window.location.href = targetUrl; }, 800);
         });
 
-        // (ทำงานเมื่อ Browser โหลดหน้านี้ขึ้นมาแสดงอีกครั้ง)
         window.addEventListener('pageshow', function(event) {
-            // สั่งปิด Swal ทุกกรณีเมื่อหน้านี้ถูกแสดงขึ้นมา
             Swal.close(); 
         });
 
-        // เรียกใช้งานฟังก์ชันเมื่อโหลดหน้าเว็บ
         setButtonLink();
     </script>
 </body>
