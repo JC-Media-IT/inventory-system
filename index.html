@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <title>ระบบตรวจนับครุภัณฑ์ คณะวารสารศาสตร์และสื่อสารมวลชน</title>
+    <title>ระบบตรวจนับพัสดุ คณะวารสารศาสตร์และสื่อสารมวลชน</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
@@ -207,7 +207,7 @@
     <div class="main-card">
         <img src="https://quota.jc.tu.ac.th/images/jc_logo.png" alt="JC Logo" class="logo-img">
         
-        <h1>ระบบตรวจนับครุภัณฑ์</h1>
+        <h1>ระบบตรวจนับพัสดุ</h1>
         <h2>คณะวารสารศาสตร์และสื่อสารมวลชน<br>มหาวิทยาลัยธรรมศาสตร์</h2>
 
         <div class="info-box">
@@ -228,7 +228,7 @@
 
         function setButtonLink() {
             var btn = document.getElementById('login-btn');
-            var targetUrl = 'https://script.google.com/a/macros/jc.tu.ac.th/s/AKfycbzMm3YzwO2AxVM6VcLWqeumqgHhQ8tdglC6DyUFtOMSeDXnfvVc3v-z9SFRIIzE3LGc/exec?fbclid=IwY2xjawGBW81leHRuA2FlbQIxMAABHdECaq9rixZtZgvfwaV2L9iShTggX89gCjLHIh8FitvcQ5mbhBO4I3QqMQ_aem_qaiv8lAS75Wqi8JDAy1KaA';
+            var targetUrl = 'https://script.google.com/macros/s/AKfycbzRfDb8idXaUUHQMyRJNkbe4FWecIaMGd9Brtlydm7DlHVXNGS9diwrwFMukbsFc4DH/exec?fbclid=IwY2xjawGBW81leHRuA2FlbQIxMAABHdECaq9rixZtZgvfwaV2L9iShTggX89gCjLHIh8FitvcQ5mbhBO4I3QqMQ_aem_qaiv8lAS75Wqi8JDAy1KaA';
             
             if (isIOS() && (isFacebookApp() || isLineApp())) {
                 btn.href = 'x-safari-' + targetUrl;
